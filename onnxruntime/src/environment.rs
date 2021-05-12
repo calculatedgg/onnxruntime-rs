@@ -14,7 +14,7 @@ use crate::{
     error::{status_to_result, OrtError, Result},
     g_ort,
     onnxruntime::custom_logger,
-    session::SessionBuilder,
+    session::{OwnedSessionBuilder, SessionBuilder},
     LoggingLevel,
 };
 
@@ -151,6 +151,10 @@ impl Environment {
     /// used to create a new ONNX session.
     pub fn new_session_builder(&self) -> Result<SessionBuilder> {
         SessionBuilder::new(self)
+    }
+
+    pub fn new_owned_session_builder(self) -> Result<OwnedSessionBuilder> {
+        OwnedSessionBuilder::new(self)
     }
 }
 

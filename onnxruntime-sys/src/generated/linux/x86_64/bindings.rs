@@ -2911,6 +2911,21 @@ pub enum OrtCudnnConvAlgoSearch {
     HEURISTIC = 1,
     DEFAULT = 2,
 }
+
+extern "C" {
+    pub fn OrtSessionOptionsAppendExecutionProvider_CPU(
+        options: *mut OrtSessionOptions,
+        use_arena: ::std::os::raw::c_int,
+    ) -> OrtStatusPtr;
+}
+
+extern "C" {
+    pub fn OrtSessionOptionsAppendExecutionProvider_CUDA(
+        options: *mut OrtSessionOptions,
+        device_id: ::std::os::raw::c_int,
+    ) -> OrtStatusPtr;
+}
+
 #[doc = " <summary>"]
 #[doc = " Options for the CUDA provider that are passed to SessionOptionsAppendExecutionProvider_CUDA"]
 #[doc = " </summary>"]
@@ -5956,18 +5971,6 @@ fn bindgen_test_layout_OrtCustomOp() {
             stringify!(KernelDestroy)
         )
     );
-}
-extern "C" {
-    pub fn OrtSessionOptionsAppendExecutionProvider_CPU(
-        options: *mut OrtSessionOptions,
-        use_arena: ::std::os::raw::c_int,
-    ) -> OrtStatusPtr;
-}
-extern "C" {
-    pub fn OrtSessionOptionsAppendExecutionProvider_CUDA(
-        options: *mut OrtSessionOptions,
-        device_id: ::std::os::raw::c_int,
-    ) -> OrtStatusPtr;
 }
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]

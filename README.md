@@ -7,7 +7,7 @@
 [![codecov](https://codecov.io/gh/nbigaouette/onnxruntime-rs/branch/master/graph/badge.svg)](https://codecov.io/gh/nbigaouette/onnxruntime-rs)
 
 This is an attempt at a Rust wrapper for
-[Microsoft's ONNX Runtime](https://github.com/microsoft/onnxruntime) (version 1.6).
+[Microsoft's ONNX Runtime](https://github.com/microsoft/onnxruntime) (version 1.7).
 
 This project consist on two crates:
 
@@ -30,7 +30,6 @@ CPU:
 GPU:
 
 * Linux x86_64
-* Windows x86_64
 
 ---
 
@@ -62,6 +61,16 @@ environment variable `ORT_USE_CUDA=1` (only supports Linux or Windows).
 
 Until the build script allow compilation of the runtime, see the [compilation notes](ONNX_Compilation_Notes.md)
 for some details on the process.
+
+### Note on using CUDA
+
+To use CUDA you will need to set `ORT_USE_CUDA=1` but also to set your session with the method `use_cuda` as such:
+
+```
+    let mut session = environment
+        .new_session_builder()?
+        .use_cuda(0)?
+```
 
 ### Note on 'ORT_STRATEGY=system'
 

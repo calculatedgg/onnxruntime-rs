@@ -32,9 +32,9 @@ fn run() -> Result<(), Error> {
         .build()?;
 
     let mut session = environment
-        .new_owned_session_builder()?
+        .new_session_builder()?
         .with_optimization_level(GraphOptimizationLevel::Basic)?
-        .use_cuda()?
+        .use_cuda(0)?
         .with_model_from_file("squeezenet1.0-8.onnx")?;
 
     let input0_shape: Vec<usize> = session.inputs[0].dimensions().map(|d| d.unwrap()).collect();

@@ -347,7 +347,7 @@ impl From<GraphOptimizationLevel> for sys::GraphOptimizationLevel {
 // FIXME: Use https://docs.rs/bindgen/0.54.1/bindgen/struct.Builder.html#method.rustified_enum
 // FIXME: Add tests to cover the commented out types
 /// Enum mapping ONNX Runtime's supported tensor types
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 #[cfg_attr(not(windows), repr(u32))]
 #[cfg_attr(windows, repr(i32))]
 pub enum TensorElementDataType {
